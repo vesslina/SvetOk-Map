@@ -1,0 +1,50 @@
+# =========================================================================
+# SvetOk (SvetOk Map) .gitignore — PUBLIC repo, NO secrets allowed
+#
+# Secrets excluded (templates `.example` kept):
+#   - app.local.properties (API URL + client token halves A/B)
+#   - keystore.properties (storePassword, keyPassword)
+#   - local.properties (root — Android SDK path)
+#   - app/google-services.json (Firebase config)
+#   - *.jks / *.keystore (release keystore)
+# =========================================================================
+
+# ── Gradle / build outputs ───────────────────────────────────────────────
+.gradle/
+.gradle-user-home/
+build/
+app/build/
+release/
+*.apk
+*.aab
+
+# ── SECRETS — never commit to this public repo ──────────────────────────
+/local.properties
+app.local.properties
+keystore.properties
+app/google-services.json
+!app.local.properties.example
+!keystore.properties.example
+!app/google-services.example.json
+
+# ── Signing keys ────────────────────────────────────────────────────────
+*.jks
+*.keystore
+
+# ── Kotlin / Java caches ────────────────────────────────────────────────
+.cxx/
+.kotlin/
+
+# ── IDE / OS junk ───────────────────────────────────────────────────────
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.iml
+
+# ── LLM / agent working files (never in version control) ───────────────
+CLAUDE.md
+SKILL.md
+AGENTS.md
+.claude/
+.opencode/
