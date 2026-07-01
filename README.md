@@ -1,4 +1,4 @@
-# СветОк Карта
+﻿# СветОк Карта
 
 Мобильное Android-приложение для жителей г. Светлоград. Показывает на интерактивной карте улицы с активными и запланированными отключениями электроэнергии, отправляет push-уведомления и принимает жалобы.
 
@@ -132,6 +132,6 @@ Copy-Item app\google-services.example.json app\google-services.json
 
 ## Автор
 
-vesslina@gmail.com / [github.com/vesslina](https://github.com/vesslina)
+vessslina@gmail.com / [github.com/vesslina](https://github.com/vesslina)
 
 2026, АО «Ставэлектросеть»
