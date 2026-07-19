@@ -27,6 +27,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.lifecycle.compose.dropUnlessResumed
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -88,7 +89,7 @@ fun MapScreen(
             StreetDetailsSheet(
                 selectedStreet = selectedStreet,
                 onDismiss = viewModel::clearStreetSelection,
-                onReportStreet = { onReportStreet(selectedStreet.streetName) },
+                onReportStreet = dropUnlessResumed { onReportStreet(selectedStreet.streetName) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .align(Alignment.BottomCenter)

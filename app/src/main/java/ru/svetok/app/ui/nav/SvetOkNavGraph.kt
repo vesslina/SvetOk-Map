@@ -2,6 +2,7 @@ package ru.svetok.app.ui.nav
 
 import android.net.Uri
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.compose.dropUnlessResumed
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -32,7 +33,7 @@ fun SvetOkNavGraph() {
 
         composable(ONBOARDING_ROUTE) {
             OnboardingScreen(
-                onFinish = {
+                onFinish = dropUnlessResumed {
                     navController.navigate(MAP_ROUTE) {
                         popUpTo(ONBOARDING_ROUTE) { inclusive = true }
                     }
@@ -45,8 +46,8 @@ fun SvetOkNavGraph() {
                 onReportStreet = { street ->
                     navController.navigate("complaint?street=${Uri.encode(street)}")
                 },
-                onOpenSettings = { navController.navigate(SETTINGS_ROUTE) },
-                onOpenOutagesList = { navController.navigate(OUTAGES_LIST_ROUTE) },
+                onOpenSettings = dropUnlessResumed { navController.navigate(SETTINGS_ROUTE) },
+                onOpenOutagesList = dropUnlessResumed { navController.navigate(OUTAGES_LIST_ROUTE) },
             )
         }
 
@@ -62,17 +63,17 @@ fun SvetOkNavGraph() {
         ) { backStackEntry ->
             ComplaintScreen(
                 streetName = backStackEntry.arguments?.getString("street").orEmpty(),
-                onBack = { navController.popBackStack() },
+                onBack = dropUnlessResumed { navController.popBackStack() },
             )
         }
 
         composable(SETTINGS_ROUTE) {
-            SettingsScreen(onBack = { navController.popBackStack() })
+            SettingsScreen(onBack = dropUnlessResumed { navController.popBackStack() })
         }
 
         composable(OUTAGES_LIST_ROUTE) {
             OutagesListScreen(
-                onBack = { navController.popBackStack() },
+                onBack = dropUnlessResumed { navController.popBackStack() },
             )
         }
     }
